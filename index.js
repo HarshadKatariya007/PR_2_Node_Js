@@ -57,6 +57,5 @@ Todo.delete("/delete/:id",(req,res) =>
 
 Todo.listen(8090,() =>
 {
-    console.log("harshad");
     console.log("Server Is Running On Port 8090");
 })
