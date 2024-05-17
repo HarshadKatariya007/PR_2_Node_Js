@@ -52,7 +52,7 @@ Todo.delete("/delete/:id",(req,res) =>
     let {id} = req.params
     
     let  deletedTodo = initialTodo.splice(id-1,1)[0]
-    res.send({deletedTodo:deletedTodo,todos:Todo})
+    res.send({deletedTodo:deletedTodo,todos:Todo});
 })
 
 Todo.listen(8090,() =>
