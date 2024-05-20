@@ -37,7 +37,7 @@ Todo.post("/addtodo", (req,res) =>
    let data = {title,isCompleted,id} = req.body
    data.id = initialTodo.length+1
    initialTodo.push(data)
-   res.send(initialTodo)
+   res.send(data)
 })
 
 Todo.patch("/update/:id" ,(req,res) =>
@@ -47,6 +47,13 @@ Todo.patch("/update/:id" ,(req,res) =>
     res.send(initialTodo[id])
 })
 
+Todo.get("/findbystatus",(req,res) =>
+{
+    let {isCompleted} = req.query;
+    let temp = initialTodo.filter((ele) => ele.isCompleted==isCompleted)
+    res.send(temp)
+})
+
 Todo.delete("/delete/:id",(req,res) =>
 {
     let {id} = req.params
@@ -54,6 +61,7 @@ Todo.delete("/delete/:id",(req,res) =>
     let  deletedTodo = initialTodo.splice(id-1,1)[0]
     res.send({deletedTodo:deletedTodo,todos:Todo});
 })
+
 
 Todo.listen(8090,() =>
 {
